@@ -1,26 +1,12 @@
 import data from './mockData'
+import User from './User';
 
 import './style.css';
 
-const Users = () => {
-    console.log(data);
-    return (
-        <div className="container">
-            {data.map(({id, name, email, address: {city}, phone, website}) => (
-                <div className = 'card elem' key={id}>
-                <div className = 'box'>
-                    <div className = 'content'>
-                        <h3>{name}</h3>
-                        <p>Email: {email}</p>
-                        <p>Adress: {city}</p>
-                        <p>Phone: {phone}</p>
-                        <a href = {website}>Website</a>
-                    </div>
-                </div>
-            </div>
-            ))}
-        </div> 
-    )
-}
+const Users = () => (
+    <div className="container">
+        {data.map((user) => <User key={user.id} {...user} /> )}
+    </div> 
+)
 
 export default Users;
